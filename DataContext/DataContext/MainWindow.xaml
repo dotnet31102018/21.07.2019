@@ -6,9 +6,11 @@
         xmlns:local="clr-namespace:DataContext"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Label Content="{Binding MyPerson}" VerticalAlignment="Top"
 
+    <StackPanel>
+        <Label Content="{Binding Name}" VerticalAlignment="Top"
+               x:Name="lbl1"
                />
-    </Grid>
+        <Button Click="Button_Click">Modify Context</Button>
+    </StackPanel>
 </Window>

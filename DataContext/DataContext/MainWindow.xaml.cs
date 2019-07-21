@@ -21,14 +21,19 @@ namespace DataContext
     public partial class MainWindow : Window
     {
         public Person MyPerson { get; set; }
+        public Person MyPerson2 { get; set; }
+        bool person1 = true;
         public MainWindow()
         {
             
             InitializeComponent();
 
-            Person MyPerson = new Person { Name = "Very nice person!" };
+            MyPerson = new Person { Name = "Very nice person!" };
+            MyPerson2 = new Person { Name = "very different person" };
 
-            this.DataContext = this;
+            //this.DataContext = MyPerson; { Binding Name }
+            //this.DataContext = this; // { Binding MyPerson }
+            this.lbl1.DataContext = MyPerson; // you can choose item for the DataContext
         }
 
         public class Person
@@ -39,6 +44,19 @@ namespace DataContext
             {
                 return $"Person name {Name}";
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (person1)
+            {
+                this.lbl1.DataContext = MyPerson2;
+            }
+            else
+            {
+                this.lbl1.DataContext = MyPerson;
+            }
+            person1 = !person1;
         }
     }
 
